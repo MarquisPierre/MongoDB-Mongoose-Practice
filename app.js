@@ -54,9 +54,6 @@ Fruit.find((err, fruits) => {
 
 
 
-
-
-
 // People Database
 const personSchema = new mongoose.Schema({
    name: String,
