@@ -3,12 +3,34 @@ mongoose.connect("mongodb://localhost:27017/fruitsDB");
 
 // Fruits Database 
 const fruitsSchema = new mongoose.Schema({
-   name: String,
-   rating: Number,
+   name:{
+    type: String,
+   required: [true, "Uh....why fruit have no Name??"]
+   } ,
+   rating: {
+    type: Number,
+    min: 1,
+    max: 10
+   },
    review: String
 })
 
 const Fruit = mongoose.model("Fruit", fruitsSchema)
+
+
+
+
+const cherry = new Fruit({
+  name: "Cherry",
+  rating: "4",
+  review: " it is okay i guess.."
+})
+
+const peach = new Fruit({
+  name:"Peach",
+  rating: "7",
+  review: "Not my favorite fruit but I still enjoy it!"
+})
 
 const apple = new Fruit({
   name: "Apple",
@@ -38,13 +60,14 @@ const oranges = new Fruit({
 // })
 
 
+
+
 Fruit.find((err, fruits) => {
   if(err){
     console.log(err);
   }else{
     
     mongoose.connection.close()
-
     fruits.forEach((fruit) => {
       console.log(fruit.name);
     });
@@ -53,14 +76,28 @@ Fruit.find((err, fruits) => {
 });
 
 
+// Fruit.updateOne({_id: "62b893c4fce74fad9d772649"}, {rating: "6"} , (err) => {
+//   if(err){
+//     console.log(err);
+//   }else{
+//     console.log("Document was updated");
+//   }
+// })
 
-
+Fruit.deleteOne({name:"Peach"}, (err) => {
+  if(err){
+        console.log(err);
+      }else{
+        console.log("Document was deleted");
+      }
+})
 
 
 // People Database
 const personSchema = new mongoose.Schema({
    name: String,
-   age: Number
+   age: Number,
+   favoriteFruit: fruitsSchema
 })
 
 
@@ -93,16 +130,18 @@ const Luz = new Person({
 // })
 
 
-Person.find((err, people) => {
-  if(err){
-    console.log(err);
-  }else{
-    people.forEach((person) => {
-      console.log(person.name);
-    });
-    console.log(" ");
-  }
-})
+// Person.find((err, people) => {
+//   if(err){
+//     console.log(err);
+//   }else{
+    
+//     people.forEach((person) => {
+//       console.log(person.name);
+//     });
+//     console.log(" ");
+    
+//   }
+// })
 
 
 
