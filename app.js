@@ -84,13 +84,15 @@ Fruit.find((err, fruits) => {
 //   }
 // })
 
-Fruit.deleteOne({name:"Peach"}, (err) => {
-  if(err){
-        console.log(err);
-      }else{
-        console.log("Document was deleted");
-      }
-})
+
+// Fruit.deleteOne({name:"Peach"}, (err) => {
+//   if(err){
+//         console.log(err);
+//       }else{
+//         console.log("Document was deleted");
+//       }
+// })
+
 
 
 // People Database
