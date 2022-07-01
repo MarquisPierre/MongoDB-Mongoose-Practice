@@ -18,8 +18,6 @@ const fruitsSchema = new mongoose.Schema({
 const Fruit = mongoose.model("Fruit", fruitsSchema)
 
 
-
-
 const cherry = new Fruit({
   name: "Cherry",
   rating: "4",
