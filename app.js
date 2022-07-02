@@ -49,13 +49,6 @@ const oranges = new Fruit({
   review: "I honestly like it more than apples LOL!!"
 })
 
-// Fruit.insertMany([apple, grapes, oranges], (err) => {
-//   if(err){
-//     console.log(err);
-//   } else{
-//     console.log("Succesfully saved all fruits to fruitsDB");
-//   }
-// })
 
 
 
